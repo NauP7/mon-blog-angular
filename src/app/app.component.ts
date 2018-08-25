@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-root',
@@ -7,24 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   
-  posts = [
-    {
-      title: 'Mon premier post',
-      content: 'Adventicium provincialium cum in mox in itinera ora in adnexam pascebantur viatorum viatorum nihil ibique.',
-      loveIts: -3,
-      created_at: '12/06/18, 11:00 AM'
-    },
-    {
-      title: 'Mon deuxième post',
-      content: 'Semper depono homini meorum censuerim causa rei Quid causa petenda tandem consiliis factis homini me.',
-      loveIts: 3,
-      created_at: '12/06/18, 11:00 AM'
-    },
-    {
-      title: 'Un autre post',
-      content: 'Eiusdem eiusdem dum cuius criminum textum sunt indicatum ita pater est regale cuius quo occulte.',
-      loveIts: 0,
-      created_at: '12/06/18, 11:00 AM'
-    }
-  ];
+	constructor() { 
+	  	var config = {
+		    apiKey: "AIzaSyDleEjyx-d-gNo7bSnXe4x6zHMLjts9dss",
+		    authDomain: "mon-blog-angular-52674.firebaseapp.com",
+		    databaseURL: "https://mon-blog-angular-52674.firebaseio.com",
+		    projectId: "mon-blog-angular-52674",
+		    storageBucket: "mon-blog-angular-52674.appspot.com",
+		    messagingSenderId: "984135254992"
+	  	};
+	  	firebase.initializeApp(config);
+	}
+
 }

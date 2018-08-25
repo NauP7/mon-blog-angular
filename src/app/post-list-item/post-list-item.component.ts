@@ -1,4 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component,Input, OnInit } from '@angular/core';
+import { Post } from '../models/Post.model';
+import { PostService } from '../services/post.service';
+import * as firebase from 'firebase';
+
 
 @Component({
   selector: 'app-post-list-item',
@@ -7,38 +11,24 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class PostListItemComponent implements OnInit {
 
-	@Input() postTitle: string;
-	@Input() postContent: string;
-	@Input() postLoveIts: number;
-	@Input() postCreatedAt: string;
+  @Input() post: Post;
 
-  constructor() { }
+  constructor(private postService: PostService) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  onDeletePost(post: Post) {
+    this.postService.removePost(post);
   }
 
-  getTitle() {
-    return this.postTitle;
+  lovePost(post: Post) {
+    this.post.loveIts++;
+    this.postService.savePosts();
   }
 
-  getDate() {
-    return this.postCreatedAt;
-  }
-
-  getContent() {
-    return this.postContent;
-  }
-
-  getLoveIt() {
-    return this.postLoveIts;
-  }
-
-  love() {
-    this.postLoveIts++;
-  }
-
-  noLove() {
-    this.postLoveIts--;
+  noLovePost(post: Post) {
+    this.post.loveIts--;
+    this.postService.savePosts();
   }
 
 }
