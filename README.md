@@ -1,2 +1,2 @@
 # mon-blog-angular
-Activité du cours Angular d'OpenClassrooms
+Activité 1 du cours d'OC : Développez avec Angular
